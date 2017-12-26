@@ -10,7 +10,7 @@
   <meta name="description" content="综述现在的cd环境中使用salt部署组件时使用了salt的state模块，在部署前先生成组件的sls文件，然后通过salt插件或者salt-ssh插件来完成部署 salt插件和salt-ssh使用的sls文件一样，只是执行命令有些许的差别 salt适用于安装minion的node salt-ssh适用于无法安装minion的node，但需支持ssh协议 salt命令格式如下 12345678910">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2017/12/26/cd中salt的使用/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/12/26/salt usage in cd/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="综述现在的cd环境中使用salt部署组件时使用了salt的state模块，在部署前先生成组件的sls文件，然后通过salt插件或者salt-ssh插件来完成部署 salt插件和salt-ssh使用的sls文件一样，只是执行命令有些许的差别 salt适用于安装minion的node salt-ssh适用于无法安装minion的node，但需支持ssh协议 salt命令格式如下 12345678910">
 <meta property="og:updated_time" content="2017-12-19T01:47:57.812Z">
@@ -54,7 +54,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
@@ -63,9 +63,9 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-cd中salt的使用" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-salt usage in cd" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/12/26/cd中salt的使用/" class="article-date">
+    <a href="/2017/12/26/salt usage in cd/" class="article-date">
   <time datetime="2017-12-26T08:42:59.246Z" itemprop="datePublished">2017-12-26</time>
 </a>
     
@@ -83,7 +83,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">举例：</span><br><span class="line"></span><br><span class="line">sudo salt -S 10.126.3.248 state.sls 36bc800e-220a-4a84-a864-cf3b067f7d51.current.deps_linux7_install</span><br><span class="line"></span><br><span class="line">解释：</span><br><span class="line">sudo 											-- sudo</span><br><span class="line">salt 		       								-- salt命令</span><br><span class="line">-S     			 								-- 定位minion的方式,-S为通过ip定位</span><br><span class="line">10.126.3.248									-- 指定node的ip</span><br><span class="line">state.sls 						        		-- salt的state模块</span><br><span class="line">36bc800e-220a-4a84-a864-cf3b067f7d51.current 	-- salt工件包相对于/srv/salt的路径</span><br><span class="line">deps_linux7_install 							-- 具体执行的文件名</span><br></pre></td></tr></table></figure>
 <p>salt-ssh的命令格式如下</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">举例：</span><br><span class="line"></span><br><span class="line">sudo salt-ssh -i 10.126.3.248 state.sls 36bc800e-220a-4a84-a864-cf3b067f7d51.current.deps_linux7_install</span><br><span class="line"></span><br><span class="line">解释：</span><br><span class="line"></span><br><span class="line">sudo 											-- sudo</span><br><span class="line">salt命令 		       							-- salt命令</span><br><span class="line">-i     			 								-- 忽略执行salt-ssh的跟系统的交互</span><br><span class="line">10.126.3.248									-- 指定node的ip</span><br></pre></td></tr></table></figure>
-<h4 id="cd中salt的安装"><a href="#cd中salt的安装" class="headerlink" title="cd中salt的安装"></a>cd中salt的安装</h4><h5 id="salt-master和salt-ssh"><a href="#salt-master和salt-ssh" class="headerlink" title="salt-master和salt-ssh"></a>salt-master和salt-ssh</h5><p>现有cd中salt-master以及salt-ssh的安装使用单独的脚本进行安装<br>脚本内容如下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>!/bin/bash</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo "start install salt-master..."</span><br><span class="line">yum install salt-master salt-ssh -y</span><br><span class="line"></span><br><span class="line">sed -i "s/#auto_accept.*/auto_accept: True/g" /etc/salt/master</span><br><span class="line">service salt-master start</span><br><span class="line"></span><br><span class="line">echo "sync pillar data"</span><br><span class="line">mkdir -pv /srv/salt/</span><br><span class="line">cp -r pillar /srv</span><br><span class="line"></span><br><span class="line">salt '*' saltutil.refresh_pillar</span><br><span class="line"></span><br><span class="line">echo "install salt-master success..."</span><br></pre></td></tr></table></figure></p>
+<h4 id="cd中salt的安装"><a href="#cd中salt的安装" class="headerlink" title="cd中salt的安装"></a>cd中salt的安装</h4><h5 id="salt-master和salt-ssh"><a href="#salt-master和salt-ssh" class="headerlink" title="salt-master和salt-ssh"></a>salt-master和salt-ssh</h5><p>现有cd中salt-master以及salt-ssh的安装使用单独的脚本进行安装<br>脚本内容如下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/bin/bash</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">echo "start install salt-master..."</span><br><span class="line">yum install salt-master salt-ssh -y</span><br><span class="line"></span><br><span class="line">sed -i "s/#auto_accept.*/auto_accept: True/g" /etc/salt/master</span><br><span class="line">service salt-master start</span><br><span class="line"></span><br><span class="line">echo "sync pillar data"</span><br><span class="line">mkdir -pv /srv/salt/</span><br><span class="line">cp -r pillar /srv</span><br><span class="line"></span><br><span class="line">salt '*' saltutil.refresh_pillar</span><br><span class="line"></span><br><span class="line">echo "install salt-master success..."</span><br></pre></td></tr></table></figure></p>
 <p>salt-master安装时会同步现有的组件的pillar数据</p>
 <h5 id="salt-minion"><a href="#salt-minion" class="headerlink" title="salt-minion"></a>salt-minion</h5><p>cd1.5中salt-minion的安装是通过蓝图流程安装<br>cd1.6中salt-minion的安装是在启动node的脚本中实现<br>首先在master的配置文件中修改以下参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#salt-master-ip</span><br><span class="line">saltMasterIp=10.126.3.203</span><br><span class="line">#repo-ip</span><br><span class="line">repoIp=10.126.3.202</span><br></pre></td></tr></table></figure></p>
 <p>通过页面下载node安装包之后执行start.sh会自动安装salt-minion</p>
@@ -108,7 +108,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2017/12/26/cd中salt的使用/" data-id="cjbndwzd20000o8gilujqij43" class="article-share-link">Teilen</a>
+      <a data-url="http://yoursite.com/2017/12/26/salt usage in cd/" data-id="cjbndzq0000013cgiwpn2n4z3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -119,7 +119,7 @@
   
   
     <a href="/2017/12/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
+      <strong class="article-nav-caption">Older</strong>
       <div class="article-nav-title">Hello World</div>
     </a>
   
@@ -142,7 +142,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
+    <h3 class="widget-title">Archives</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
     </div>
@@ -152,12 +152,12 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
         
           <li>
-            <a href="/2017/12/26/cd中salt的使用/">(no title)</a>
+            <a href="/2017/12/26/salt usage in cd/">(no title)</a>
           </li>
         
           <li>
