@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ansible安装1234git clone git://github.com/ansible/ansible.git --recursive source ./hacking/env-setupsudo pip install paramiko PyYAML Jinja2 httplib2 six 配置/etc/ansible/ansible.cfg 文件cp /home/ansible/exa">
+  <meta name="description" content="salt syndictopologymaster节点必须运行salt-master进程 syndic节点必须运行salt-master进程和salt-syndic进程 minion节点必须运行salt-minion进程 当master节点发出命令时，它将会被直接连接到master的syndic节点和minion节点接收 minion节点将按照正常的方式来处理这条命令 syndic节点收到这条命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/2018/01/23/linux运维相关/ansible/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/12/26/salt-ha/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="ansible安装1234git clone git://github.com/ansible/ansible.git --recursive source ./hacking/env-setupsudo pip install paramiko PyYAML Jinja2 httplib2 six 配置/etc/ansible/ansible.cfg 文件cp /home/ansible/exa">
-<meta property="og:updated_time" content="2018-01-18T09:30:31.582Z">
+<meta property="og:description" content="salt syndictopologymaster节点必须运行salt-master进程 syndic节点必须运行salt-master进程和salt-syndic进程 minion节点必须运行salt-minion进程 当master节点发出命令时，它将会被直接连接到master的syndic节点和minion节点接收 minion节点将按照正常的方式来处理这条命令 syndic节点收到这条命令">
+<meta property="og:updated_time" content="2017-10-10T09:17:36.704Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="ansible安装1234git clone git://github.com/ansible/ansible.git --recursive source ./hacking/env-setupsudo pip install paramiko PyYAML Jinja2 httplib2 six 配置/etc/ansible/ansible.cfg 文件cp /home/ansible/exa">
+<meta name="twitter:description" content="salt syndictopologymaster节点必须运行salt-master进程 syndic节点必须运行salt-master进程和salt-syndic进程 minion节点必须运行salt-minion进程 当master节点发出命令时，它将会被直接连接到master的syndic节点和minion节点接收 minion节点将按照正常的方式来处理这条命令 syndic节点收到这条命令">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -153,18 +153,19 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-linux运维相关/ansible" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-salt-ha" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="ansible安装"><a href="#ansible安装" class="headerlink" title="ansible安装"></a>ansible安装</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git clone git://github.com/ansible/ansible.git --recursive</span><br><span class="line"> source ./hacking/env-setup</span><br><span class="line"></span><br><span class="line">sudo pip install paramiko PyYAML Jinja2 httplib2 six</span><br></pre></td></tr></table></figure>
-<p>配置/etc/ansible/ansible.cfg 文件<br>cp /home/ansible/examples/ansible.cfg /etc/ansible/</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hosts</span><br><span class="line">[agent128]</span><br><span class="line">192.168.128.128</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@master ansible]# ansible all -m ping</span><br><span class="line">192.168.128.128 | SUCCESS =&gt; &#123;</span><br><span class="line">    &quot;changed&quot;: false, </span><br><span class="line">    &quot;ping&quot;: &quot;pong&quot;</span><br><span class="line">&#125;</span><br><span class="line">[root@master ansible]# ansible agent128 -m command -a &apos;w&apos;</span><br><span class="line">192.168.128.128 | SUCCESS | rc=0 &gt;&gt;</span><br><span class="line"> 04:47:20 up 14:01,  3 users,  load average: 0.00, 0.01, 0.05</span><br><span class="line">USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT</span><br><span class="line">root     tty1                      三14   14:00m  0.08s  0.08s -bash</span><br><span class="line">root     pts/0    192.168.128.1    03:44   40:00   0.36s  0.36s -bash</span><br><span class="line">root     pts/1    master           04:47    1.00s  0.31s  0.03s w</span><br></pre></td></tr></table></figure>
-<h4 id="安装setuptools"><a href="#安装setuptools" class="headerlink" title="安装setuptools"></a>安装setuptools</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">wget http://pypi.python.org/packages/source/s/setuptools/setuptools-0.6c11.tar.gz</span><br><span class="line">tar zxvf setuptools-0.6c11.tar.gz</span><br><span class="line">cd setuptools-0.6c11</span><br><span class="line">python setup.py install</span><br></pre></td></tr></table></figure>
-<h4 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装pip</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf pip-9.0.1.tar.gz</span><br><span class="line">cd pip-9.0.1</span><br><span class="line">python setup.py install</span><br><span class="line">#查看版本</span><br><span class="line"></span><br><span class="line">pip -v</span><br></pre></td></tr></table></figure>
-<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ansible agent128 -m package -a "name=httpd"</span><br><span class="line">ansible agent128 -m service -a "name=httpd state=started"</span><br><span class="line">ansible agent128 -m service -a "name=httpd state=stopped"</span><br></pre></td></tr></table></figure>
+        <h4 id="salt-syndic"><a href="#salt-syndic" class="headerlink" title="salt syndic"></a>salt syndic</h4><h5 id="topology"><a href="#topology" class="headerlink" title="topology"></a>topology</h5><p>master节点必须运行salt-master进程</p>
+<p>syndic节点必须运行salt-master进程和salt-syndic进程</p>
+<p>minion节点必须运行salt-minion进程</p>
+<p>当master节点发出命令时，它将会被直接连接到master的syndic节点和minion节点接收</p>
+<p>minion节点将按照正常的方式来处理这条命令</p>
+<p>syndic节点收到这条命令之后，salt-syndic进程会将命令中继到syndic节点上运行的salt-master进程，然后将该命令继续发送到与之链接的minion节点和syndic节点</p>
+<p>当minion节点执行完命令生成events和job return时，会汇总在minion所连接的salt-master进程里，salt-master进程会通过salt-syndic进程将数据转发至master节点或者上一层的syndic节点</p>
+
       
 
       
@@ -243,7 +244,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/23/linux运维相关/ansible/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2017/12/26/salt-ha/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -257,7 +258,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/23/linux运维相关/ssh免密登陆/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/12/27/java判断文件字符编码/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -267,8 +268,8 @@
     </a>
   
   
-    <a href="/2017/12/27/java判断文件字符编码/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title"></div>
+    <a href="/2017/12/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
       <i class="icon-circle-right"></i>
     </a>
   
