@@ -6,14 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="代码部分1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/01/23/算法和数据结构/python单链表实现/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="代码部分1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011">
+<meta property="og:updated_time" content="2018-01-23T11:51:09.738Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="代码部分1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283848586878889909192939495969798991001011">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -149,164 +153,142 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-算法和数据结构/python单链表实现" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="代码部分"><a href="#代码部分" class="headerlink" title="代码部分"></a>代码部分</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#节点类</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,data)</span>:</span></span><br><span class="line">    	<span class="comment">#初始化node</span></span><br><span class="line">        self.data = data</span><br><span class="line">        self.next = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__repr__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> str(self.data)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LinkedList</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">    	<span class="comment">#初始化linkedlist</span></span><br><span class="line">        self.length = <span class="number">0</span></span><br><span class="line">        self.head = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isEmpty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment">#判断链表是否为空</span></span><br><span class="line">        <span class="keyword">return</span> self.length  == <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self,index)</span>:</span></span><br><span class="line">    	<span class="comment">#根据索引获取节点值</span></span><br><span class="line">        index =  index <span class="keyword">if</span> index &gt; <span class="number">0</span> <span class="keyword">else</span> self.length + index</span><br><span class="line">        <span class="keyword">if</span> index &gt; self.length <span class="keyword">or</span> index &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        node = self.head</span><br><span class="line">        <span class="keyword">while</span> index:</span><br><span class="line">            node = node.next</span><br><span class="line">            index -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">append</span><span class="params">(self, node)</span>:</span></span><br><span class="line">    	<span class="comment">#在链表末添加node</span></span><br><span class="line">        <span class="keyword">if</span> isinstance(node,Node):</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            node =  Node(data=node)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.isEmpty():</span><br><span class="line">            self.head =  node</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            old_head = self.head</span><br><span class="line">            <span class="keyword">while</span> old_head.next:</span><br><span class="line">                old_head = old_head.next</span><br><span class="line">            old_head.next = node</span><br><span class="line">        self.length += <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self,index,value)</span>:</span></span><br><span class="line">    	<span class="comment">#在指定位置添加node</span></span><br><span class="line">        <span class="keyword">if</span> type(index) <span class="keyword">is</span> int:</span><br><span class="line">            <span class="keyword">if</span> index &gt; self.length:</span><br><span class="line">                print(<span class="string">"index is out of range"</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                this_node = Node(data=value)</span><br><span class="line">                current_node = self.head</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> index == <span class="number">0</span>:</span><br><span class="line">                    self.head = this_node</span><br><span class="line">                    this_node.next = current_node</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    </span><br><span class="line">                    <span class="keyword">while</span> index <span class="number">-1</span>:</span><br><span class="line">                        current_node = current_node.next</span><br><span class="line">                        index -= <span class="number">1</span></span><br><span class="line">                    </span><br><span class="line">                    this_node.next = current_node.next</span><br><span class="line">                    current_node.next = this_node</span><br><span class="line">                    self.length += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">return</span>  </span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"index value must be int."</span>)</span><br><span class="line">            <span class="keyword">return</span> </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">delete</span><span class="params">(self,index)</span>:</span></span><br><span class="line">    	<span class="comment">#删除指定node</span></span><br><span class="line">        <span class="keyword">if</span> type(index) <span class="keyword">is</span> int:</span><br><span class="line">            <span class="keyword">if</span> index &gt; self.length:</span><br><span class="line">                print(<span class="string">"index is out of range"</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> index == <span class="number">0</span>:</span><br><span class="line">                    self.head = self.head.next</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    current_node = self.head</span><br><span class="line">                    <span class="keyword">while</span> index<span class="number">-1</span>:</span><br><span class="line">                        current_node = current_node.next</span><br><span class="line">                        index -=<span class="number">1</span></span><br><span class="line">                    current_node.next = current_node.next.next</span><br><span class="line">                    self.length -= <span class="number">1</span></span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"index vlaue must be int."</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self,index,value)</span>:</span></span><br><span class="line">    	<span class="comment">#更新指定node</span></span><br><span class="line">        <span class="keyword">if</span> type(index) <span class="keyword">is</span> int:</span><br><span class="line">            <span class="keyword">if</span> index &gt; self.length:</span><br><span class="line">                print(<span class="string">"index out of range"</span>)</span><br><span class="line">                <span class="keyword">return</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                this_node = Node(data=value)</span><br><span class="line">                <span class="keyword">if</span> index == <span class="number">0</span>:</span><br><span class="line">                    this_node.next = self.head.next</span><br><span class="line">                    self.head = this_node</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    current_node = self.head</span><br><span class="line">                    <span class="keyword">while</span> index - <span class="number">1</span>:</span><br><span class="line">                        current_node = current_node.next</span><br><span class="line">                        index -= <span class="number">1</span></span><br><span class="line">                    this_node.next = current_node.next.next</span><br><span class="line">                    current_node.next = this_node</span><br><span class="line">                    <span class="keyword">return</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">"index must be int"</span>)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_length</span><span class="params">(self)</span>:</span></span><br><span class="line">    	<span class="comment">#获取链表长度</span></span><br><span class="line">        current_node = self.head</span><br><span class="line">        <span class="keyword">if</span> current_node:</span><br><span class="line">            i = <span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> current_node:</span><br><span class="line">                current_node = current_node.next</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">clear</span><span class="params">(self)</span>:</span></span><br><span class="line">    	<span class="comment">#清空链表</span></span><br><span class="line">        self.head = <span class="keyword">None</span></span><br><span class="line">        self.length = <span class="number">0</span></span><br><span class="line">        print(<span class="string">"clear the linked list finished"</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">print_linkedlist</span><span class="params">(self)</span>:</span></span><br><span class="line">    	<span class="comment">#打印链表</span></span><br><span class="line">        <span class="keyword">if</span> self.isEmpty():</span><br><span class="line">            print(<span class="string">"the linkedlist is empty!"</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            node = self.head</span><br><span class="line">            print(<span class="string">"head--"</span>,node.data,end=<span class="string">' '</span>)</span><br><span class="line">            <span class="keyword">while</span> node.next:</span><br><span class="line">                node = node.next</span><br><span class="line">                print(<span class="string">"--&gt;"</span>,node.data,end=<span class="string">' '</span>)</span><br><span class="line">            print(<span class="string">"  --&gt;None.linked list finished"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__reversed__</span><span class="params">(self)</span>:</span></span><br><span class="line">    	<span class="comment">#反转链表 递归</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">reverse</span><span class="params">(pre_node,node)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> pre_node <span class="keyword">is</span> self.head:</span><br><span class="line">                pre_node.next = <span class="keyword">None</span></span><br><span class="line">            <span class="keyword">if</span> node:</span><br><span class="line">                next_node = node.next</span><br><span class="line">                node.next = pre_node</span><br><span class="line">                <span class="keyword">return</span> reverse(node,next_node)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.head = pre_node</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> reverse(self.head,self.head.next)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    node0 = Node(data=<span class="string">"node0"</span>)</span><br><span class="line">    node1 = Node(data=<span class="string">"node1"</span>)</span><br><span class="line">    node2 = Node(data=<span class="string">"node2"</span>)</span><br><span class="line">    node3 = Node(data=<span class="string">"node3"</span>)</span><br><span class="line"></span><br><span class="line">    linklist = LinkedList()</span><br><span class="line">    linklist.append(node0)</span><br><span class="line">    linklist.append(node1)</span><br><span class="line">    linklist.append(node2)</span><br><span class="line">    linklist.append(node3)</span><br><span class="line">    linklist.print_linkedlist()</span><br><span class="line">    linklist.insert(<span class="number">3</span>,<span class="string">"nodex"</span>)</span><br><span class="line">    linklist.print_linkedlist()</span><br><span class="line">    linklist.delete(<span class="number">4</span>)</span><br><span class="line">    linklist.print_linkedlist()    </span><br><span class="line">    linklist.update(<span class="number">2</span>,<span class="string">"update_node2"</span>)</span><br><span class="line">    linklist.print_linkedlist()</span><br><span class="line">    print(linklist.get(<span class="number">2</span>)) </span><br><span class="line">    print(linklist.get_length())  </span><br><span class="line">    linklist.__reversed__()</span><br><span class="line">    linklist.print_linkedlist()</span><br></pre></td></tr></table></figure>
+<p>####　执行结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">E:\pythonworkspace&gt;python nodelist.py</span><br><span class="line">head-- node0 --&gt; node1 --&gt; node2 --&gt; node3   --&gt;None.linked list finished</span><br><span class="line">head-- node0 --&gt; node1 --&gt; node2 --&gt; nodex --&gt; node3   --&gt;None.linked list finished</span><br><span class="line">head-- node0 --&gt; node1 --&gt; node2 --&gt; nodex   --&gt;None.linked list finished</span><br><span class="line">head-- node0 --&gt; node1 --&gt; update_node2 --&gt; nodex   --&gt;None.linked list finished</span><br><span class="line">update_node2</span><br><span class="line">4</span><br><span class="line">head-- nodex --&gt; update_node2 --&gt; node1 --&gt; node0   --&gt;None.linked list finished</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/23/算法和数据结构/python单链表实现/" class="archive-article-date">
-  	<time datetime="2018-01-23T11:52:34.401Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-23</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/23/linux运维相关/ssh免密登陆/" class="archive-article-date">
-  	<time datetime="2018-01-23T11:52:34.366Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-23</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/23/linux运维相关/ansible/" class="archive-article-date">
-  	<time datetime="2018-01-23T11:52:34.327Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-23</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
       
-        </div></section>
+
       
+
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/27/java判断文件字符编码/" class="archive-article-date">
-  	<time datetime="2017-12-27T12:53:03.628Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-27</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      </div>
+    </span>
+  </div>
+</div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2018/01/23/算法和数据结构/python单链表实现/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/26/linux运维相关/salt-ha/" class="archive-article-date">
-  	<time datetime="2017-12-26T09:12:32.590Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-26</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/12/26/hello-world/" class="archive-article-date">
-  	<time datetime="2017-12-26T07:50:53.197Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-26</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/12/26/hello-world/">Hello World</a>
-    </h1>
+  
+    <a href="/2018/01/23/linux运维相关/ssh免密登陆/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -329,8 +311,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
